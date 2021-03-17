@@ -1,5 +1,21 @@
 {% extends 'base.html' %}
+
 {% block content %}
-{{responses}}
+
 <h1>Thanks for completing this survey!</h1>
+<p>Here are your responses:</p>
+
+<ul>
+  {% for question in survey.questions %}
+  <li>
+    <strong>{{ question.question }}</strong>
+    {{ responses[loop.index0]["choice"] }}
+    {{ responses[loop.index0]["text"] }}
+  </li>
+  {% endfor %}
+</ul>
+<a href="/">Take another survey</a>
+<p>If you've completed all of the surveys, you should probably take a <a href="https://www.youtube.com">YouTube</a> break!</p>
 {% endblock %}
+
+
